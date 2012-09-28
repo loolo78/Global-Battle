@@ -1,29 +1,32 @@
 
 
-#Release 5 Milestone 2(pre-ALPHA)
+#1.0-a4
 #--------------------------------------Import------------------------------
-import pygame, time, GDB
+import pygame, time
 from pygame.locals import *
 from sys import exit
 from uti2 import *
 from random import randint
+
+
+
 #--------------------------------------Game--------------------------------
 pygame.init()
 
 pygame.mouse.set_visible(True)
 
-screen = pygame.display.set_mode((1280,720), pygame.DOUBLEBUF|pygame.FULLSCREEN, 32)
+screen = pygame.display.set_mode((1280, 720), pygame.DOUBLEBUF | pygame.FULLSCREEN, 32)
 pygame.display.set_caption("Global Battle MS2")
 
 initialize()
-playmusic(sndPATH + "\song.ogg")
-screen.blit(initscreen, (0,0))
+playmusic(absolutePath(r"res\soundFX\song.ogg"))
+screen.blit(initscreen, (0, 0))
 pygame.display.flip()
 pygame.time.wait(3000)
 
 #------------------------------------Login&Register------------------------
 try:
-    userfile = open("C:\gbuserfile.txt", "r")
+    userfile = open(absolutePath(r"\data\gbuserfile.txt"), "r")
     userfile = userfile.read()
     print userfile
 except IOError:
@@ -40,9 +43,9 @@ def market_tool(operation):
         if not NOP == 5:  #LIMIT HERE---------------------------- (Limit = Amount-1)
             NOP = str(NOP)
             
-            mar_itm =  marPATH +"\mar_itmv" + NOP + "v.png"   #pic change
+            mar_itm = marPATH + "\mar_itmv" + NOP + "v.png"   #pic change
             
-            info_mar_itm =  marPATH +"\mar_itmv" + NOP + "v.txt" #info file change
+            info_mar_itm = marPATH + "\mar_itmv" + NOP + "v.txt" #info file change
             info_mar_itm = open(info_mar_itm, "r")
 
             #-----Type Get
@@ -62,9 +65,9 @@ def market_tool(operation):
             NOP = 1
             NOP = str(NOP)
             
-            mar_itm =  marPATH +"\mar_itmv" + NOP + "v.png"  #pic change
+            mar_itm = marPATH + "\mar_itmv" + NOP + "v.png"  #pic change
             
-            info_mar_itm =  marPATH +"\mar_itmv" + NOP + "v.txt" #info file change
+            info_mar_itm = marPATH + "\mar_itmv" + NOP + "v.txt" #info file change
             info_mar_itm = open(info_mar_itm, "r")
 
             #-----Type Get
@@ -86,9 +89,9 @@ def market_tool(operation):
         NOP -= 1
         if not NOP == 0:
             NOP = str(NOP)
-            mar_itm =  marPATH +"\mar_itmv" + NOP + "v.png"
+            mar_itm = marPATH + "\mar_itmv" + NOP + "v.png"
 
-            info_mar_itm =  marPATH +"\mar_itmv" + NOP + "v.txt" #info file change
+            info_mar_itm = marPATH + "\mar_itmv" + NOP + "v.txt" #info file change
             info_mar_itm = open(info_mar_itm, "r")
 
             #-----Type Get
@@ -107,9 +110,9 @@ def market_tool(operation):
             NOP = 4 #------------------------------------This is when it loops
             NOP = str(NOP)
             
-            mar_itm =  marPATH +"\mar_itmv" + NOP + "v.png"
+            mar_itm = marPATH + "\mar_itmv" + NOP + "v.png"
             
-            info_mar_itm =  marPATH +"\mar_itmv" + NOP + "v.txt" #info file change
+            info_mar_itm = marPATH + "\mar_itmv" + NOP + "v.txt" #info file change
             info_mar_itm = open(info_mar_itm, "r")
 
             #-----Type Get
@@ -124,6 +127,7 @@ def market_tool(operation):
             #/----Type Get
             
             maritm_v1 = pygame.image.load(mar_itm)
+
 #--------------------------------GLOBALVAR---------------------------------
 Current = ["L_0", None, None, None] 
 # |1:Level of menu  |2:Name of L1  |3:Name of L2, |4:Name of L3
@@ -177,9 +181,9 @@ while 1:
                 
                 if event.key == K_BACKSPACE:
                     
-                    if Current[0] =="L_1":
+                    if Current[0] == "L_1":
                         
-                        Current[0] ="L_0"
+                        Current[0] = "L_0"
                     Current[0] = "L_1"
                     Current[1] = None
                     Current[2] = None
@@ -255,7 +259,7 @@ while 1:
                             print "EXEC Complete"
                             print money
                             print wmoney
-                            money = money-wmoney #Substract the cost of the weapon
+                            money = money - wmoney #Substract the cost of the weapon
                             
                             if money >= 0:
                                 own = open(r"C:\gbuserown.txt", "w")
@@ -289,14 +293,14 @@ while 1:
                 #ALPHA__screen.blit(map800, (0,0))
                 
             if Current[1] == "Market":
-                screen.blit(maritm_v1, (0,0))
-                screen.blit(marketdock, (0,600))
+                screen.blit(maritm_v1, (0, 0))
+                screen.blit(marketdock, (0, 600))
                 
             if Current[1] == "WorldDB":
                 screen.blit(dbbg, (0, 0))
                 
             if Current[1] == "Organizer":
-                screen.blit(orgbg, (0,0))
+                screen.blit(orgbg, (0, 0))
                 
             if Current[1] == "Map":
                 screen.blit(map1280, (0, 0))
@@ -308,9 +312,9 @@ while 1:
                 screen.blit(buymenu, (440, 300))
                 
             if Current[2] == "Error":
-                screen.blit(error, (0,0))
+                screen.blit(error, (0, 0))
             if Current[2] == "Success":
-                screen.blit(success, (0,0))
+                screen.blit(success, (0, 0))
                 
     #UPDATE_________________________
     pygame.display.flip()
